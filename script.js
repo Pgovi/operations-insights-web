@@ -1,3 +1,21 @@
+// ===== Google Sheet backend =====
+// Deploy google-apps-script.gs as a Web App (see instructions in that file)
+// and paste the resulting /exec URL below.
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoyXgua1yQLubyIwdCqT_l3kWzwnGqalFqlHDIvkqo6h2BSFqcis0MrTh-fFWqPspYPQ/exec';
+
+function submitToSheet(data) {
+    if (!SCRIPT_URL || SCRIPT_URL.indexOf('PASTE_YOUR') === 0) {
+        return Promise.reject(new Error('SCRIPT_URL is not configured'));
+    }
+    return fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: new URLSearchParams(data)
+    }).then(res => {
+        if (!res.ok) throw new Error('Request failed');
+        return res.json();
+    });
+}
+
 // ===== Cursor Glow =====
 const cursorGlow = document.getElementById('cursorGlow');
 if (cursorGlow) {
@@ -85,18 +103,92 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 counters.forEach(c => counterObserver.observe(c));
 
+// ===== FinOps Mock Bar Fill Animation =====
+const finopsMock = document.querySelector('.finops-mock');
+if (finopsMock) {
+    const mockObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.mock-fill').forEach((fill, i) => {
+                    setTimeout(() => {
+                        fill.style.width = fill.dataset.width + '%';
+                        fill.classList.add('filled');
+                    }, i * 180);
+                });
+                mockObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    mockObserver.observe(finopsMock);
+}
+
 // ===== Contact Form =====
 document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    const btn = e.target.querySelector('button');
+    const form = e.target;
+    const btn = form.querySelector('button');
     const orig = btn.innerHTML;
-    btn.innerHTML = 'Message Sent! <i class="fas fa-check-circle"></i>';
-    btn.style.background = 'linear-gradient(135deg, #10b981, #06b6d4)';
-    setTimeout(() => {
+
+    btn.disabled = true;
+    btn.innerHTML = 'Sending...';
+
+    submitToSheet({
+        source: 'contact',
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+    }).then(() => {
+        btn.innerHTML = 'Message Sent! <i class="fas fa-check-circle"></i>';
+        btn.style.background = '#17a5fb';
+        btn.style.color = '#ffffff';
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = orig;
+            btn.style.background = '';
+            btn.style.color = '';
+            form.reset();
+        }, 3000);
+    }).catch(() => {
+        btn.disabled = false;
+        btn.innerHTML = 'Something went wrong — try again <i class="fas fa-triangle-exclamation"></i>';
+        setTimeout(() => { btn.innerHTML = orig; }, 3000);
+    });
+});
+
+// ===== FinOps AI Waitlist Form =====
+document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button');
+    const orig = btn.innerHTML;
+    let note = form.nextElementSibling;
+
+    const name = form.name.value;
+    const company = form.company.value;
+    const mobile = form.mobile.value;
+    const email = form.email.value;
+
+    btn.disabled = true;
+    btn.innerHTML = 'Joining...';
+
+    submitToSheet({
+        source: 'waitlist',
+        name: name,
+        company: company,
+        mobile: mobile,
+        email: email
+    }).then(() => {
+        form.innerHTML = '<span class="waitlist-success"><i class="fas fa-check-circle"></i>&nbsp; ' + email + ' added to the waitlist</span>';
+        if (note) note.textContent = "You're on the list. We'll email you the moment it's live.";
+    }).catch(() => {
+        btn.disabled = false;
         btn.innerHTML = orig;
-        btn.style.background = '';
-        e.target.reset();
-    }, 3000);
+        if (note) {
+            note.textContent = 'Something went wrong — please try again.';
+            note.classList.add('error');
+        }
+    });
 });
 
 // ===== Smooth Scroll =====
@@ -114,10 +206,10 @@ document.querySelectorAll('.service-card').forEach(card => {
         const rect = card.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
-        card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.15), rgba(255,255,255,0.05))`;
+        card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(23, 165, 251, 0.08), var(--bg-card) 60%)`;
     });
 
     card.addEventListener('mouseleave', () => {
-        card.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03))';
+        card.style.background = '';
     });
 });
