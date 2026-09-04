@@ -31,9 +31,13 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Sync site files to S3
+        # must-revalidate: the filenames are not content-hashed, so browsers
+        # have to check with the origin instead of serving a stale styles.css
+        # or script.js from their own cache after a deploy.
         run: |
           aws s3 sync . "s3://${S3_BUCKET}/" \
             --delete \
+            --cache-control "public, max-age=0, must-revalidate" \
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude ".claude/*" \
