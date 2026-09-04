@@ -245,18 +245,22 @@ function runCountUp(el) {
     requestAnimationFrame(tick);
 }
 
-const finCols = document.querySelectorAll('.fin-col');
-if (finCols.length) {
+// Each block animates as it enters view. Observing the whole column
+// meant tall mobile columns finished animating above the fold.
+const finBlocks = document.querySelectorAll(
+    '.fin-src-row, .fin-hub, .fin-panel, .fin-kpis, .fin-rec, .fin-impact'
+);
+if (finBlocks.length) {
     const finObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
             entry.target.classList.add('fin-in');
             entry.target.querySelectorAll('[data-countup]').forEach((el, i) => {
-                setTimeout(() => runCountUp(el), 250 + i * 110);
+                setTimeout(() => runCountUp(el), 150 + i * 110);
             });
             finObserver.unobserve(entry.target);
         });
-    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.35, rootMargin: '0px 0px -40px 0px' });
 
-    finCols.forEach(col => finObserver.observe(col));
+    finBlocks.forEach(el => finObserver.observe(el));
 }
