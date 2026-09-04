@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinOps AI | Operations Insights — AI-Powered Cloud Cost Management</title>
+
+    <meta name="description" content="FinOps AI by Operations Insights unifies AWS, Azure and GCP spend in one AI-powered dashboard. Real-time visibility, anomaly detection, forecasting and optimisation recommendations. Launching soon.">
+    <meta name="keywords" content="FinOps, cloud cost management, AWS cost optimization, Azure cost management, GCP billing, multi-cloud spend, cloud waste detection, cost forecasting">
+    <meta name="author" content="Operations Insights">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FinOps AI | Operations Insights">
+    <meta property="og:description" content="See every dollar your company spends across AWS, Azure and GCP in one AI-powered dashboard. Launching soon.">
+    <meta property="og:site_name" content="Operations Insights">
+
+    <link rel="canonical" href="https://operations-insights.in/finops-ai.html">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2317a5fb'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='15' font-weight='800' fill='white'%3EOI%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="Operations Insights Home">
+                <div class="logo-icon">OI</div>
+                <span class="logo-text">Operations<span class="highlight">Insights</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="finops-ai.html" class="active">FinOps AI</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#vision">Vision</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a href="#waitlist" class="nav-cta">
+                <span>Join Waitlist</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="fin-hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-glow hero-glow-1"></div>
+            <div class="hero-glow hero-glow-2"></div>
+        </div>
+        <div class="container fin-hero-grid">
+            <div data-animate="fade-up">
+                <span class="launch-badge"><span class="badge-dot"></span> Launching Soon</span>
+                <h1 class="fin-hero-title">AI-Powered <span class="gradient-text">FinOps</span></h1>
+                <p class="fin-hero-lead">One language for finance and engineering. Unify cloud, SaaS and
+                    infrastructure spend with business context — so every rupee is visible, explainable
+                    and optimised.</p>
+                <div class="fin-pills">
+                    <div class="fin-pill"><i class="fas fa-eye"></i> Complete spend visibility</div>
+                    <div class="fin-pill"><i class="fas fa-wand-magic-sparkles"></i> Automated waste detection</div>
+                    <div class="fin-pill"><i class="fas fa-chart-line"></i> Forecasting &amp; budgets</div>
+                    <div class="fin-pill"><i class="fas fa-layer-group"></i> Multi-cloud in one view</div>
+                </div>
+                <div class="hero-actions" style="justify-content:flex-start">
+                    <a href="#waitlist" class="btn btn-primary btn-lg">Join the Waitlist <i class="fas fa-arrow-right"></i></a>
+                    <a href="#platform" class="btn btn-glass btn-lg">See how it works</a>
+                </div>
+            </div>
+            <div class="fin-hero-visual" data-animate="fade-up" data-delay="150">
+                <div class="fin-ring">
+                    <div class="fin-ring-core">
+                        <div class="fin-ring-title">Tech<br>Spend</div>
+                        <div class="fin-ring-sub">Control plane</div>
+                    </div>
+                    <span class="fin-orbit fin-orbit-1"><i class="fab fa-aws"></i></span>
+                    <span class="fin-orbit fin-orbit-2"><i class="fab fa-microsoft"></i></span>
+                    <span class="fin-orbit fin-orbit-3"><i class="fab fa-google"></i></span>
+                    <span class="fin-orbit fin-orbit-4"><i class="fas fa-dharmachakra"></i></span>
+                    <span class="fin-orbit fin-orbit-5"><i class="fas fa-database"></i></span>
+                    <span class="fin-orbit fin-orbit-6"><i class="fas fa-shapes"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect / Analyze / Optimize -->
+    <section class="fin-platform" id="platform">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">The Platform</span>
+                <h2>Connect. <span class="gradient-text">Analyze.</span> Optimize.</h2>
+                <p class="section-desc">From scattered billing data to measurable impact — in one workflow.</p>
+            </div>
+
+            <div class="fin-cols">
+                <!-- 01 CONNECT -->
+                <div class="fin-col" data-animate="fade-up">
+                    <div class="fin-col-head">
+                        <span class="fin-step">01</span>
+                        <div>
+                            <h3>Connect</h3>
+                            <p>Pull every cost signal from every source</p>
+                        </div>
+                    </div>
+
+                    <div class="fin-src-row">
+                        <span class="fin-src"><i class="fab fa-aws"></i></span>
+                        <span class="fin-src"><i class="fab fa-microsoft"></i></span>
+                        <span class="fin-src"><i class="fab fa-google"></i></span>
+                        <span class="fin-src"><i class="fas fa-snowflake"></i></span>
+                    </div>
+                    <div class="fin-flow" aria-hidden="true"></div>
+
+                    <div class="fin-hub">
+                        <div class="fin-hub-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="fin-hub-title">Data Ingestion</div>
+                        <div class="fin-hub-live"><span class="badge-dot"></span> Real-time</div>
+                        <div class="fin-hub-cards">
+                            <div class="fin-hub-card">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <b>Billing</b>
+                                <span>All billing detail captured</span>
+                            </div>
+                            <div class="fin-hub-card">
+                                <i class="fas fa-tags"></i>
+                                <b>Pricing</b>
+                                <span>On-demand &amp; reserved rates</span>
+                            </div>
+                            <div class="fin-hub-card">
+                                <i class="fas fa-chart-simple"></i>
+                                <b>Usage</b>
+                                <span>Resource usage metrics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fin-flow fin-flow-down" aria-hidden="true"></div>
+                    <div class="fin-src-row">
+                        <span class="fin-src"><i class="fas fa-database"></i></span>
+                        <span class="fin-src"><i class="fab fa-slack"></i></span>
+                        <span class="fin-src"><i class="fab fa-github"></i></span>
+                        <span class="fin-src"><i class="fas fa-dharmachakra"></i></span>
+                    </div>
+
+                    <div class="fin-col-foot">
+                        <span><i class="fas fa-shield-halved"></i> Read-only &amp; secure</span>
+                        <b>No agents</b>
+                    </div>
+                </div>
+
+                <!-- 02 ANALYZE -->
+                <div class="fin-col" data-animate="fade-up" data-delay="100">
+                    <div class="fin-col-head">
+                        <span class="fin-step">02</span>
+                        <div>
+                            <h3>Analyze</h3>
+                            <p>Turn raw billing into decisions</p>
+                        </div>
+                    </div>
+
+                    <div class="fin-panel">
+                        <div class="fin-donut-row">
+                            <div class="fin-donut" style="--a:38%;--b:62%;--c:78%;--d:90%"></div>
+                            <ul class="fin-legend">
+                                <li><i style="background:#17a5fb"></i> Compute</li>
+                                <li><i style="background:#4f8ef7"></i> Storage</li>
+                                <li><i style="background:#7c6cf5"></i> Network</li>
+                                <li><i style="background:#a78bfa"></i> Database</li>
+                                <li><i style="background:#cfd6e4"></i> Other</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="fin-kpis">
+                        <div class="fin-kpi">
+                            <span>Total spend</span>
+                            <b>$487.3K</b>
+                            <em class="up"><i class="fas fa-arrow-trend-up"></i> 12.6%</em>
+                        </div>
+                        <div class="fin-kpi">
+                            <span>Cost per user</span>
+                            <b>$2.48</b>
+                            <em class="down"><i class="fas fa-arrow-trend-down"></i> 8.4%</em>
+                        </div>
+                        <div class="fin-kpi">
+                            <span>Gross margin</span>
+                            <b>71.4%</b>
+                            <em class="up"><i class="fas fa-arrow-trend-up"></i> 5.7%</em>
+                        </div>
+                    </div>
+
+                    <div class="fin-panel">
+                        <div class="fin-panel-title">Spend over time</div>
+                        <div class="fin-bars">
+                            <div class="fin-bar" style="--h:52%"><span>Jan</span></div>
+                            <div class="fin-bar" style="--h:38%"><span>Feb</span></div>
+                            <div class="fin-bar" style="--h:66%"><span>Mar</span></div>
+                            <div class="fin-bar" style="--h:54%"><span>Apr</span></div>
+                            <div class="fin-bar" style="--h:80%"><span>May</span></div>
+                            <div class="fin-bar" style="--h:95%"><span>Jun</span></div>
+                        </div>
+                    </div>
+
+                    <div class="fin-panel">
+                        <div class="fin-panel-title">Savings realised</div>
+                        <svg class="fin-spark" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#17a5fb" stop-opacity=".28"/>
+                                    <stop offset="100%" stop-color="#17a5fb" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M0,58 L50,54 L100,46 L150,40 L200,30 L250,18 L300,8 L300,70 L0,70 Z" fill="url(#sparkFill)"/>
+                            <path d="M0,58 L50,54 L100,46 L150,40 L200,30 L250,18 L300,8"
+                                  fill="none" stroke="#17a5fb" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 03 OPTIMIZE -->
+                <div class="fin-col" data-animate="fade-up" data-delay="200">
+                    <div class="fin-col-head">
+                        <span class="fin-step">03</span>
+                        <div>
+                            <h3>Optimize</h3>
+                            <p>Act on ranked, costed recommendations</p>
+                        </div>
+                    </div>
+
+                    <div class="fin-rec-head">
+                        <span><i class="fas fa-wand-magic-sparkles"></i> AI recommendations</span>
+                        <b>14 opportunities</b>
+                    </div>
+
+                    <div class="fin-rec">
+                        <div class="fin-rec-icon"><i class="fas fa-server"></i></div>
+                        <div class="fin-rec-body">
+                            <b>Rightsize compute instances</b>
+                            <span>24 over-provisioned instances</span>
+                        </div>
+                        <div class="fin-rec-save">
+                            <b>$12,400<em>/mo</em></b>
+                            <span>96% confidence</span>
+                        </div>
+                    </div>
+                    <div class="fin-rec">
+                        <div class="fin-rec-icon"><i class="fas fa-trash-can"></i></div>
+                        <div class="fin-rec-body">
+                            <b>Remove unused resources</b>
+                            <span>12 unattached volumes detected</span>
+                        </div>
+                        <div class="fin-rec-save">
+                            <b>$8,230<em>/mo</em></b>
+                            <span>94% confidence</span>
+                        </div>
+                    </div>
+                    <div class="fin-rec">
+                        <div class="fin-rec-icon"><i class="fas fa-box-archive"></i></div>
+                        <div class="fin-rec-body">
+                            <b>Optimise storage tiers</b>
+                            <span>Move cold data to infrequent access</span>
+                        </div>
+                        <div class="fin-rec-save">
+                            <b>$4,110<em>/mo</em></b>
+                            <span>92% confidence</span>
+                        </div>
+                    </div>
+                    <div class="fin-rec">
+                        <div class="fin-rec-icon"><i class="fas fa-scale-balanced"></i></div>
+                        <div class="fin-rec-body">
+                            <b>Consolidate licences</b>
+                            <span>Eliminate redundant SaaS seats</span>
+                        </div>
+                        <div class="fin-rec-save">
+                            <b>$2,900<em>/mo</em></b>
+                            <span>90% confidence</span>
+                        </div>
+                    </div>
+
+                    <div class="fin-panel-title" style="margin:26px 0 14px">Projected monthly impact</div>
+                    <div class="fin-impact">
+                        <div><i class="fas fa-arrow-trend-down"></i><b>$31,640</b><span>Total savings</span></div>
+                        <div><i class="fas fa-chart-simple"></i><b>18%</b><span>Cost reduction</span></div>
+                        <div><i class="fas fa-gauge-high"></i><b>91%</b><span>Efficiency score</span></div>
+                        <div><i class="fas fa-leaf"></i><b>2.4t</b><span>CO₂ reduced</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="fin-disclaimer">Screens above are an illustrative product preview. Figures are examples,
+                not customer data — FinOps AI has not launched yet.</p>
+        </div>
+    </section>
+
+    <!-- Integrations -->
+    <section class="section fin-integrations">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Integrations</span>
+                <h2>Every source. <span class="gradient-text">One platform.</span></h2>
+                <p class="section-desc">Connect the tools you already run. Unify every cost signal.</p>
+            </div>
+            <div class="fin-int-grid" data-animate="fade-up" data-delay="100">
+                <div class="fin-int"><i class="fab fa-aws"></i><span>AWS</span></div>
+                <div class="fin-int"><i class="fab fa-microsoft"></i><span>Azure</span></div>
+                <div class="fin-int"><i class="fab fa-google"></i><span>Google Cloud</span></div>
+                <div class="fin-int"><i class="fas fa-dharmachakra"></i><span>Kubernetes</span></div>
+                <div class="fin-int"><i class="fab fa-docker"></i><span>Docker</span></div>
+                <div class="fin-int"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
+                <div class="fin-int"><i class="fas fa-snowflake"></i><span>Snowflake</span></div>
+                <div class="fin-int"><i class="fas fa-fire"></i><span>Spark</span></div>
+                <div class="fin-int"><i class="fas fa-chart-line"></i><span>Grafana</span></div>
+                <div class="fin-int"><i class="fab fa-slack"></i><span>Slack</span></div>
+                <div class="fin-int"><i class="fab fa-github"></i><span>GitHub</span></div>
+                <div class="fin-int"><i class="fas fa-cog"></i><span>Terraform</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="section fin-personas">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Who it's for</span>
+                <h2>Built for the people who <span class="gradient-text">own the bill</span></h2>
+            </div>
+            <div class="fin-persona-grid">
+                <div class="fin-persona" data-animate="fade-up">
+                    <div class="service-icon-wrap"><i class="fas fa-terminal"></i></div>
+                    <h3>Engineering leaders</h3>
+                    <p>See cost per service, per environment and per team — without opening a billing console.
+                        Catch regressions in the same week they ship, not the following quarter.</p>
+                </div>
+                <div class="fin-persona" data-animate="fade-up" data-delay="100">
+                    <div class="service-icon-wrap"><i class="fas fa-indian-rupee-sign"></i></div>
+                    <h3>Finance teams</h3>
+                    <p>Forecast with confidence, allocate spend to cost centres and explain variance in
+                        business terms instead of SKU codes.</p>
+                </div>
+                <div class="fin-persona" data-animate="fade-up" data-delay="200">
+                    <div class="service-icon-wrap"><i class="fas fa-user-tie"></i></div>
+                    <h3>Founders &amp; CTOs</h3>
+                    <p>One number you can trust for gross margin and unit economics, updated continuously
+                        as your infrastructure changes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section class="section fin-waitlist" id="waitlist">
+        <div class="container">
+            <div class="finops-panel" data-animate="fade-up">
+                <div class="finops-left">
+                    <span class="launch-badge"><span class="badge-dot"></span> Launching Soon</span>
+                    <h2>Get early access to <span class="gradient-text">FinOps AI</span></h2>
+                    <p class="finops-desc">Join the waitlist and we'll reach out as soon as onboarding opens.
+                        Early users help shape the roadmap.</p>
+                    <ul class="finops-points">
+                        <li><i class="fas fa-check"></i> Priority onboarding at launch</li>
+                        <li><i class="fas fa-check"></i> Direct line to the product team</li>
+                        <li><i class="fas fa-check"></i> No spam, no commitment</li>
+                    </ul>
+                    <form class="waitlist-form" id="waitlistForm">
+                        <div class="waitlist-row">
+                            <input type="text" id="waitlistName" name="name" placeholder="Full name" required autocomplete="name">
+                            <input type="text" id="waitlistCompany" name="company" placeholder="Company name" required autocomplete="organization">
+                        </div>
+                        <div class="waitlist-row">
+                            <input type="tel" id="waitlistMobile" name="mobile" placeholder="Mobile number" required autocomplete="tel">
+                            <input type="email" id="waitlistEmail" name="email" placeholder="you@company.com" required autocomplete="email">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Join Waitlist <i class="fas fa-arrow-right"></i></button>
+                    </form>
+                    <p class="waitlist-note">No spam. We'll email you the moment it's live.</p>
+                </div>
+                <div class="finops-right">
+                    <div class="finops-mock">
+                        <div class="finops-mock-header">
+                            <span class="mock-dot mock-dot-1"></span>
+                            <span class="mock-dot mock-dot-2"></span>
+                            <span class="mock-dot mock-dot-3"></span>
+                            <span class="mock-title">finops-ai — company-spend</span>
+                        </div>
+                        <div class="finops-mock-body">
+                            <div class="mock-row">
+                                <span class="mock-label">AWS</span>
+                                <div class="mock-bar"><div class="mock-fill" data-width="62"></div></div>
+                                <span class="mock-value">$62,400</span>
+                            </div>
+                            <div class="mock-row">
+                                <span class="mock-label">Azure</span>
+                                <div class="mock-bar"><div class="mock-fill" data-width="41"></div></div>
+                                <span class="mock-value">$41,200</span>
+                            </div>
+                            <div class="mock-row">
+                                <span class="mock-label">GCP</span>
+                                <div class="mock-bar"><div class="mock-fill" data-width="28"></div></div>
+                                <span class="mock-value">$28,900</span>
+                            </div>
+                            <div class="mock-row mock-row-total">
+                                <span class="mock-label">Total</span>
+                                <div class="mock-bar"><div class="mock-fill" data-width="100"></div></div>
+                                <span class="mock-value">$132,500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" aria-label="Operations Insights">
+                        <div class="logo-icon">OI</div>
+                        <span class="logo-text">Operations<span class="highlight">Insights</span></span>
+                    </a>
+                    <p>Empowering businesses through technology excellence. Your trusted partner for IT consulting, DevOps, cloud, and digital transformation.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#platform">How it works</a></li>
+                        <li><a href="#waitlist">Join waitlist</a></li>
+                        <li><a href="index.html#services">All services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#vision">Our Vision</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact-list">
+                        <li><i class="fas fa-map-marker-alt"></i> Bengaluru, India 560078</li>
+                        <li><i class="fas fa-phone-alt"></i> +91 96118 86777</li>
+                        <li><i class="fas fa-envelope"></i> infra@operations-insights.in</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Operations Insights. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -27,7 +27,7 @@ if (cursorGlow) {
 
 // ===== Navbar =====
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
+if (navbar) window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
@@ -35,7 +35,7 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 
-hamburger.addEventListener('click', () => {
+if (hamburger && navLinks) hamburger.addEventListener('click', () => {
     const isActive = navLinks.classList.toggle('active');
     hamburger.classList.toggle('active');
     hamburger.setAttribute('aria-expanded', isActive);
@@ -43,6 +43,7 @@ hamburger.addEventListener('click', () => {
 
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
+        if (!navLinks || !hamburger) return;
         navLinks.classList.remove('active');
         hamburger.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
@@ -123,7 +124,8 @@ if (finopsMock) {
 }
 
 // ===== Contact Form =====
-document.getElementById('contactForm').addEventListener('submit', (e) => {
+const contactForm = document.getElementById('contactForm');
+if (contactForm) contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('button');
@@ -157,7 +159,8 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
 });
 
 // ===== FinOps AI Waitlist Form =====
-document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+const waitlistForm = document.getElementById('waitlistForm');
+if (waitlistForm) waitlistForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const form = e.target;
     const btn = form.querySelector('button');
