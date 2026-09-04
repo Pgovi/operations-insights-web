@@ -80,16 +80,18 @@
             </div>
             <div class="fin-hero-visual" data-animate="fade-up" data-delay="150">
                 <div class="fin-ring">
+                    <span class="fin-pulse"></span>
+                    <span class="fin-pulse fin-pulse-2"></span>
                     <div class="fin-ring-core">
                         <div class="fin-ring-title">Tech<br>Spend</div>
                         <div class="fin-ring-sub">Control plane</div>
                     </div>
-                    <span class="fin-orbit fin-orbit-1"><i class="fab fa-aws"></i></span>
-                    <span class="fin-orbit fin-orbit-2"><i class="fab fa-microsoft"></i></span>
-                    <span class="fin-orbit fin-orbit-3"><i class="fab fa-google"></i></span>
-                    <span class="fin-orbit fin-orbit-4"><i class="fas fa-dharmachakra"></i></span>
-                    <span class="fin-orbit fin-orbit-5"><i class="fas fa-database"></i></span>
-                    <span class="fin-orbit fin-orbit-6"><i class="fas fa-shapes"></i></span>
+                    <span class="fin-arm fin-arm-1"><span class="fin-chip"><i class="fab fa-aws"></i></span></span>
+                    <span class="fin-arm fin-arm-2"><span class="fin-chip"><i class="fab fa-microsoft"></i></span></span>
+                    <span class="fin-arm fin-arm-3"><span class="fin-chip"><i class="fab fa-google"></i></span></span>
+                    <span class="fin-arm fin-arm-4"><span class="fin-chip"><i class="fas fa-dharmachakra"></i></span></span>
+                    <span class="fin-arm fin-arm-5"><span class="fin-chip"><i class="fas fa-database"></i></span></span>
+                    <span class="fin-arm fin-arm-6"><span class="fin-chip"><i class="fas fa-shapes"></i></span></span>
                 </div>
             </div>
         </div>
@@ -186,17 +188,17 @@
                     <div class="fin-kpis">
                         <div class="fin-kpi">
                             <span>Total spend</span>
-                            <b>$487.3K</b>
+                            <b data-countup="487.3" data-prefix="$" data-suffix="K" data-dec="1">$487.3K</b>
                             <em class="up"><i class="fas fa-arrow-trend-up"></i> 12.6%</em>
                         </div>
                         <div class="fin-kpi">
                             <span>Cost per user</span>
-                            <b>$2.48</b>
+                            <b data-countup="2.48" data-prefix="$" data-dec="2">$2.48</b>
                             <em class="down"><i class="fas fa-arrow-trend-down"></i> 8.4%</em>
                         </div>
                         <div class="fin-kpi">
                             <span>Gross margin</span>
-                            <b>71.4%</b>
+                            <b data-countup="71.4" data-suffix="%" data-dec="1">71.4%</b>
                             <em class="up"><i class="fas fa-arrow-trend-up"></i> 5.7%</em>
                         </div>
                     </div>
@@ -223,7 +225,7 @@
                                 </linearGradient>
                             </defs>
                             <path d="M0,58 L50,54 L100,46 L150,40 L200,30 L250,18 L300,8 L300,70 L0,70 Z" fill="url(#sparkFill)"/>
-                            <path d="M0,58 L50,54 L100,46 L150,40 L200,30 L250,18 L300,8"
+                            <path class="fin-spark-line" d="M0,58 L50,54 L100,46 L150,40 L200,30 L250,18 L300,8"
                                   fill="none" stroke="#17a5fb" stroke-width="2.5" stroke-linecap="round"/>
                         </svg>
                     </div>
@@ -291,10 +293,10 @@
 
                     <div class="fin-panel-title" style="margin:26px 0 14px">Projected monthly impact</div>
                     <div class="fin-impact">
-                        <div><i class="fas fa-arrow-trend-down"></i><b>$31,640</b><span>Total savings</span></div>
-                        <div><i class="fas fa-chart-simple"></i><b>18%</b><span>Cost reduction</span></div>
-                        <div><i class="fas fa-gauge-high"></i><b>91%</b><span>Efficiency score</span></div>
-                        <div><i class="fas fa-leaf"></i><b>2.4t</b><span>CO₂ reduced</span></div>
+                        <div><i class="fas fa-arrow-trend-down"></i><b data-countup="31640" data-prefix="$" data-comma="1">$31,640</b><span>Total savings</span></div>
+                        <div><i class="fas fa-chart-simple"></i><b data-countup="18" data-suffix="%">18%</b><span>Cost reduction</span></div>
+                        <div><i class="fas fa-gauge-high"></i><b data-countup="91" data-suffix="%">91%</b><span>Efficiency score</span></div>
+                        <div><i class="fas fa-leaf"></i><b data-countup="2.4" data-suffix="t" data-dec="1">2.4t</b><span>CO₂ reduced</span></div>
                     </div>
                 </div>
             </div>

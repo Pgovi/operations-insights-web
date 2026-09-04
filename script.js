@@ -216,3 +216,47 @@ document.querySelectorAll('.service-card').forEach(card => {
         card.style.background = '';
     });
 });
+
+// ===== FinOps Platform Motion =====
+function runCountUp(el) {
+    const target = parseFloat(el.dataset.countup);
+    if (isNaN(target)) return;
+    const dec = parseInt(el.dataset.dec) || 0;
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const comma = el.dataset.comma === '1';
+    const start = performance.now();
+    const duration = 1400;
+
+    function fmt(v) {
+        let n = v.toFixed(dec);
+        if (comma) n = Number(n).toLocaleString('en-US');
+        return prefix + n + suffix;
+    }
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        el.textContent = fmt(eased * target);
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = fmt(target);
+    }
+    el.textContent = fmt(0);
+    requestAnimationFrame(tick);
+}
+
+const finCols = document.querySelectorAll('.fin-col');
+if (finCols.length) {
+    const finObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('fin-in');
+            entry.target.querySelectorAll('[data-countup]').forEach((el, i) => {
+                setTimeout(() => runCountUp(el), 250 + i * 110);
+            });
+            finObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+    finCols.forEach(col => finObserver.observe(col));
+}
