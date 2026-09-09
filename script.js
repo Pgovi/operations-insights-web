@@ -264,3 +264,31 @@ if (finBlocks.length) {
 
     finBlocks.forEach(el => finObserver.observe(el));
 }
+
+// ===== Hero float-card parallax =====
+// Shifts the whole float layer against the cursor for depth. Applied to the
+// container, not the cards, so it never collides with their own transforms.
+const heroFloats = document.querySelector('.hero-floats');
+const heroSection = document.querySelector('.hero');
+if (heroFloats && heroSection &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let raf = null;
+
+    heroSection.addEventListener('mousemove', (e) => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+            raf = null;
+            const r = heroSection.getBoundingClientRect();
+            const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+            const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+            const amp = 14;
+            heroFloats.style.setProperty('--par-x', (-dx * amp).toFixed(1) + 'px');
+            heroFloats.style.setProperty('--par-y', (-dy * amp).toFixed(1) + 'px');
+        });
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+        heroFloats.style.setProperty('--par-x', '0px');
+        heroFloats.style.setProperty('--par-y', '0px');
+    });
+}

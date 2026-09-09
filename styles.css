@@ -394,12 +394,19 @@ h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
 .hero-ring-1 {
     width: 620px;
     height: 620px;
+    animation: heroRingSpin 62s linear infinite;
 }
 
 .hero-ring-2 {
     width: 900px;
     height: 900px;
     border-color: rgba(14, 15, 12, 0.10);
+    animation: heroRingSpin 46s linear infinite reverse;
+}
+
+@keyframes heroRingSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .hero-floats {
@@ -407,6 +414,8 @@ h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
     inset: 0;
     z-index: 1;
     pointer-events: none;
+    transform: translate3d(var(--par-x, 0px), var(--par-y, 0px), 0);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .float-card {
@@ -415,12 +424,40 @@ h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
     align-items: center;
     gap: 11px;
     padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
-    animation: drift 7s ease-in-out infinite alternate;
+    pointer-events: auto;
+    cursor: default;
+    will-change: transform;
+    transition: box-shadow 0.25s ease;
+    /* two stacked animations: a one-shot entrance, then a perpetual drift.
+       The drift is delayed until the entrance finishes so they never fight
+       over `transform`. */
+    animation-duration: 0.75s, var(--dur, 7s);
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out;
+    animation-delay: var(--in-delay, 0s), calc(var(--in-delay, 0s) + 0.75s);
+    animation-iteration-count: 1, infinite;
+    animation-direction: normal, alternate;
+    animation-fill-mode: both, none;
+}
+
+.float-card:hover { box-shadow: var(--shadow-lg); z-index: 3; }
+
+/* left-hand cards fly in from the left, right-hand from the right */
+.float-card-1, .float-card-2, .float-card-3 { animation-name: floatInLeft, drift; }
+.float-card-4, .float-card-5, .float-card-6 { animation-name: floatInRight, drift; }
+
+@keyframes floatInLeft {
+    from { opacity: 0; transform: translate(-46px, 12px) scale(0.94); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes floatInRight {
+    from { opacity: 0; transform: translate(46px, 12px) scale(0.94); }
+    to   { opacity: 1; transform: none; }
 }
 
 .float-icon {
@@ -434,6 +471,25 @@ h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
     align-items: center;
     justify-content: center;
     font-size: 0.9rem;
+    animation: floatIconPulse 3.4s ease-in-out infinite;
+    animation-delay: calc(var(--in-delay, 0s) + 0.9s);
+}
+
+@keyframes floatIconPulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.09); }
+}
+
+/* hovering a card blinks its icon between the pale chip and full lime.
+   steps(1) gives a hard on/off blink rather than a fade. 2Hz stays under
+   the 3-flashes-per-second accessibility threshold. */
+.float-card:hover .float-icon {
+    animation: floatIconBlink 0.5s steps(1) infinite;
+}
+
+@keyframes floatIconBlink {
+    0%, 49%   { background: var(--accent); color: var(--accent-ink); transform: scale(1.12); }
+    50%, 100% { background: var(--accent-pale); color: var(--accent-2); transform: scale(1); }
 }
 
 .float-label {
@@ -444,12 +500,12 @@ h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
     white-space: nowrap;
 }
 
-.float-card-1 { top: 26%; left: 5%; animation-delay: 0s; }
-.float-card-2 { top: 46%; left: 3%; animation-delay: -1.4s; }
-.float-card-3 { bottom: 24%; left: 8%; animation-delay: -2.8s; }
-.float-card-4 { top: 24%; right: 5%; animation-delay: -0.7s; }
-.float-card-5 { top: 45%; right: 3%; animation-delay: -2.1s; }
-.float-card-6 { bottom: 24%; right: 8%; animation-delay: -3.5s; }
+.float-card-1 { top: 26%; left: 5%;  --in-delay: 0.10s; --amp: -17px; --rot: -1.3deg; --dur: 6.2s; }
+.float-card-2 { top: 46%; left: 3%;  --in-delay: 0.24s; --amp: -12px; --rot:  1.1deg; --dur: 7.4s; }
+.float-card-3 { bottom: 24%; left: 8%;  --in-delay: 0.38s; --amp: -20px; --rot: -0.8deg; --dur: 8.1s; }
+.float-card-4 { top: 24%; right: 5%; --in-delay: 0.17s; --amp: -14px; --rot:  1.4deg; --dur: 6.8s; }
+.float-card-5 { top: 45%; right: 3%; --in-delay: 0.31s; --amp: -19px; --rot: -1.1deg; --dur: 7.9s; }
+.float-card-6 { bottom: 24%; right: 8%; --in-delay: 0.45s; --amp: -13px; --rot:  0.9deg; --dur: 6.5s; }
 
 .float-card-2 .float-icon,
 .float-card-5 .float-icon {
@@ -458,8 +514,8 @@ h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
 }
 
 @keyframes drift {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-14px); }
+    0%   { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(var(--amp, -14px)) rotate(var(--rot, 0deg)); }
 }
 
 .hero-content {
@@ -2325,4 +2381,12 @@ h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
 @media (max-width: 768px) {
     .finops-actions { flex-direction: column; align-items: stretch; }
     .finops-actions .btn { justify-content: center; }
+}
+
+/* ===== Hero float cards: reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    .float-card, .float-icon, .hero-ring,
+    .float-card:hover .float-icon { animation: none !important; }
+    .float-card { opacity: 1 !important; transform: none !important; }
+    .hero-floats { transform: none !important; transition: none !important; }
 }
