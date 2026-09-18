@@ -292,3 +292,11 @@ if (heroFloats && heroSection &&
         heroFloats.style.setProperty('--par-y', '0px');
     });
 }
+
+// Carry the selected engagement into the enquiry without overwriting a draft.
+document.querySelectorAll('[data-enquiry]').forEach(link => {
+    link.addEventListener('click', () => {
+        const subject = document.getElementById('subject');
+        if (subject && !subject.value.trim()) subject.value = link.dataset.enquiry;
+    });
+});

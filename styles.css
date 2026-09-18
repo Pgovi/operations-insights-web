@@ -2390,3 +2390,31 @@ h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
     .float-card { opacity: 1 !important; transform: none !important; }
     .hero-floats { transform: none !important; transition: none !important; }
 }
+
+/* Privacy policy */
+.privacy-page { padding: 150px 0 90px; }
+.privacy-content { max-width: 860px; }
+.privacy-header { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border-color); }
+.privacy-header h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.12; margin-bottom: 20px; }
+.privacy-content p { font-size: 1rem; line-height: 1.85; color: var(--text-body); margin-bottom: 18px; }
+.privacy-content section { margin-top: 36px; }
+.privacy-content h2 { font-size: 1.4rem; line-height: 1.4; margin-bottom: 14px; }
+.privacy-content a, .form-privacy a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
+.privacy-contact { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--border-color); }
+.form-privacy { font-size: 0.875rem; line-height: 1.6; color: var(--text-body); margin-top: 14px; }
+@media (max-width: 600px) { .privacy-page { padding: 120px 0 60px; } }
+
+/* Engagement options */
+.engagements { background: var(--bg-secondary); }
+.engagement-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.engagement-card { display: flex; flex-direction: column; padding: 32px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); }
+.engagement-number { font-size: 0.875rem; font-weight: 700; color: var(--accent-2); margin-bottom: 24px; }
+.engagement-card h3 { font-size: 1.5rem; line-height: 1.3; margin-bottom: 16px; }
+.engagement-card p, .engagement-card dd { font-size: 1rem; line-height: 1.7; color: var(--text-body); }
+.engagement-card dl { margin: 24px 0 28px; }
+.engagement-card dt { font-weight: 700; margin: 18px 0 6px; }
+.engagement-card dt:first-child { margin-top: 0; }
+.engagement-card .card-link { margin-top: auto; }
+.spendx-promise { font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 700; line-height: 1.4; margin-bottom: 20px; color: var(--text-dark); }
+@media (max-width: 960px) { .engagement-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .engagement-card { padding: 24px; } }
